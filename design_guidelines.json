@@ -1,0 +1,132 @@
+{
+  "project_name": "Global News Navigator",
+  "design_philosophy": {
+    "theme": "The Global Newsroom",
+    "core_values": ["Authority", "Clarity", "Minimalism", "Data-First"],
+    "mood": "A modern digital command center for global journalism. Clean, white-space heavy, with sharp typographic hierarchy."
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Playfair Display, serif",
+      "body": "Inter, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "installation": {
+      "google_fonts_import": "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;600;700&display=swap');"
+    },
+    "scale": {
+      "h1": "text-4xl md:text-6xl font-serif tracking-tight font-bold",
+      "h2": "text-3xl md:text-4xl font-serif tracking-tight font-semibold",
+      "h3": "text-xl md:text-2xl font-serif font-medium",
+      "body": "text-base font-sans leading-relaxed text-slate-600",
+      "caption": "text-xs font-mono tracking-wider text-slate-400 uppercase"
+    }
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "DEFAULT": "#0f172a", 
+        "foreground": "#f8fafc"
+      },
+      "secondary": {
+        "DEFAULT": "#f1f5f9",
+        "foreground": "#0f172a"
+      },
+      "accent": {
+        "DEFAULT": "#dc2626", 
+        "foreground": "#ffffff"
+      },
+      "background": "#ffffff",
+      "surface": "#f8fafc",
+      "border": "#e2e8f0"
+    },
+    "map_colors": {
+      "fill": "#e2e8f0",
+      "stroke": "#ffffff",
+      "hover": "#94a3b8",
+      "active": "#0f172a",
+      "background": "#f8fafc"
+    }
+  },
+  "layout_strategy": {
+    "landing_page": {
+      "structure": "Full-viewport height. Header transparent absolute top. Map centered.",
+      "map_container": "w-full h-[calc(100vh-80px)] relative overflow-hidden bg-slate-50",
+      "interaction": "Clicking a country opens a sliding Side Sheet (Shadcn Sheet) from the right."
+    },
+    "admin_panel": {
+      "structure": "Sidebar navigation (collapsed on mobile). Main content area with breadcrumbs.",
+      "table_style": "Minimalist rows. No vertical borders. Header with light gray background.",
+      "container": "max-w-7xl mx-auto p-8"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-6 py-2 font-medium tracking-wide transition-all",
+      "secondary": "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-none px-6 py-2 font-medium transition-all",
+      "ghost": "hover:bg-slate-100 text-slate-700 rounded-none px-4 py-2"
+    },
+    "cards": {
+      "style": "bg-white border border-border shadow-sm hover:shadow-md transition-all rounded-none",
+      "usage": "Used for stats in admin panel or newspaper detailed view."
+    },
+    "inputs": {
+      "style": "rounded-none border-slate-200 focus:ring-1 focus:ring-slate-900 focus:border-slate-900 bg-transparent"
+    },
+    "map": {
+      "library": "react-simple-maps",
+      "projection": "geoMercator",
+      "styles": {
+        "default": { "fill": "#e2e8f0", "stroke": "#ffffff", "strokeWidth": 0.5, "outline": "none" },
+        "hover": { "fill": "#94a3b8", "stroke": "#ffffff", "strokeWidth": 0.75, "outline": "none", "cursor": "pointer" },
+        "pressed": { "fill": "#0f172a", "stroke": "#0f172a", "outline": "none" }
+      }
+    }
+  },
+  "motion": {
+    "page_transition": {
+      "initial": { "opacity": 0, "y": 10 },
+      "animate": { "opacity": 1, "y": 0 },
+      "exit": { "opacity": 0, "y": -10 },
+      "transition": { "duration": 0.3, "ease": "easeOut" }
+    },
+    "hover_effects": "transition-all duration-200 ease-in-out"
+  },
+  "assets": {
+    "images": [
+      {
+        "category": "hero_login",
+        "url": "https://images.unsplash.com/photo-1689421755150-9c3b8dc3a45b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwbmV3c3BhcGVyJTIwcmVhZGluZyUyMGNvZmZlZXxlbnwwfHx8fDE3NzExNzI3OTN8MA&ixlib=rb-4.1.0&q=85",
+        "alt": "Minimalist newspaper reading"
+      },
+      {
+        "category": "admin_placeholder",
+        "url": "https://images.unsplash.com/photo-1642365385739-79c81b346b73?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBhYnN0cmFjdCUyMHRlY2hub2xvZ3l8ZW58MHx8fHwxNzcxMTcyNzk0fDA&ixlib=rb-4.1.0&q=85",
+        "alt": "Modern minimal office"
+      }
+    ]
+  },
+  "libraries_to_install": [
+    "react-simple-maps",
+    "d3-scale",
+    "framer-motion",
+    "@radix-ui/react-dialog",
+    "@radix-ui/react-label",
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge",
+    "lucide-react"
+  ],
+  "instructions_to_main_agent": [
+    "INSTALL `react-simple-maps` and `d3-scale` immediately.",
+    "Use `shadcn/ui` components for all interactive elements (Sheet, Dialog, Input, Table).",
+    "Implement the map using `react-simple-maps` `ComposableMap` and `Geographies`.",
+    "Use a TopoJSON file for the world map. Fetch it from a reliable CDN like `https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json`.",
+    "Ensure the Admin Panel is protected by a simple Login (mock auth or simple JWT).",
+    "The 'Country Detail' view MUST be a Sidebar/Sheet that slides over the map, NOT a new page, to maintain context.",
+    "Use the provided colors to customize the Tailwind config.",
+    "Make sure typography uses Playfair Display for all Headers to give that 'Newspaper' feel.",
+    "The admin dashboard should list countries that have newspapers added. If a country has 0 newspapers, it can be hidden or shown as empty."
+  ]
+}
